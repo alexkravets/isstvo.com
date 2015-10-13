@@ -1,0 +1,23 @@
+@import "bourbon";
+@import "normalize-rails";
+
+/* Settings ---------------------------------------------------------------- */
+$base-font-family   : 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+$header-font-family : sans-serif;
+$code-font-family   : 'Monaco', monospace;
+$base-font-size     : 16;
+$base-line-height   : 1.5;
+
+$h1 : 0.33 * 7.3;
+$h2 : 0.33 * 4.3;
+$h3 : 0.33 * 3.3;
+
+$base-color       : #444;
+$text-color       : rgba(34,34,34,.77);
+$link-color       : #F04530;
+$link-hover-color : #B00909;
+$sidebar-bg-color : #fafafa;
+
+@import "application/base";
+@import "application/header";
+@import "application/journal";

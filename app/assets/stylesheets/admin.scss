@@ -1,0 +1,29 @@
+@import "chr";
+@import "loft";
+@import "ants";
+@import "tape";
+@import "journal";
+
+@include font-face('Proxima Nova', "ProximaNovaRegular",  $regular,  $asset-pipeline: true, $file-formats: eot woff ttf);
+@include font-face('Proxima Nova', "ProximaNovaSemibold", $semibold, $asset-pipeline: true, $file-formats: eot woff ttf);
+
+/* Tablet ------------------------------------------------------------------ */
+@media #{$tablet} {
+  .sidebar, .header, .list:not(.list-aside) .items {
+    font-family : "Proxima Nova", 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  }
+
+  .tape .list.tape .items {
+    font-family : $base-font-family;
+  }
+
+  .menu {
+    .menu-loft, .menu-settings, .menu-logout {
+      color : darken($sidebar-color, 30%);
+    }
+  }
+
+  .menu-loft {
+    margin-top : 1em;
+  }
+}
