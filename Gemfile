@@ -17,7 +17,7 @@ gem 'mongoid', '~> 5.0'
 # This `autoinc` branch supports mongoid 5.0, required by Loft
 gem 'mongoid-autoinc', github: 'suweller/mongoid-autoinc'
 gem 'mongosteen'
-gem 'chr'
+gem 'chr',     github: 'slate-studio/chr'
 gem 'ants',    github: 'slate-studio/ants'
 gem 'loft',    github: 'slate-studio/loft'
 gem 'tape',    github: 'alexkravets/tape'

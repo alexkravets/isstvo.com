@@ -36,6 +36,18 @@ GIT
       mongoid-slug (>= 4.0.0)
 
 GIT
+  remote: git://github.com/slate-studio/chr.git
+  revision: 7e3f9d3404ef61e390253f96ac577f565fbe932a
+  specs:
+    chr (0.4.13)
+      bourbon
+      coffee-rails (>= 4.0)
+      formagic (>= 0.2.8)
+      jquery-rails
+      rails (~> 4.2.4)
+      sass-rails
+
+GIT
   remote: git://github.com/slate-studio/loft.git
   revision: b825c17b6d109b6f400225baaf75bcfccee7c7b5
   specs:
@@ -124,13 +136,6 @@ GEM
       carrierwave (>= 0.8.0, < 0.11.0)
       mongoid (>= 3.0, < 6.0)
       mongoid-grid_fs (>= 1.3, < 3.0)
-    chr (0.4.13)
-      bourbon
-      coffee-rails (>= 4.0)
-      formagic (>= 0.2.8)
-      jquery-rails
-      rails (~> 4.2.4)
-      sass-rails
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -438,7 +443,7 @@ DEPENDENCIES
   bson_ext
   bundler-audit
   byebug
-  chr
+  chr!
   coffee-rails (~> 4.1.0)
   dotenv-rails
   factory_girl_rails
