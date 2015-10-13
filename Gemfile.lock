@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alexkravets/journal.git
-  revision: d5827f4f18ebddf890c7234e511a131d656c407a
+  revision: 9f8ba47f9c6532d1bb9d4c2eff186a8db7e34d5c
   specs:
     journal (0.1.1)
       ants (>= 0.2.0)
