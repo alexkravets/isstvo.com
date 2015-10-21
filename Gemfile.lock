@@ -17,9 +17,9 @@ GIT
 
 GIT
   remote: git://github.com/alexkravets/tape.git
-  revision: 889e3282081f9dfc2a79cd5a6e8da5a647cc3e1e
+  revision: 3e6ef59d14e12bad764d9916cd41c99f2ba7f143
   specs:
-    tape (0.1.1)
+    tape (0.1.2)
       ants (>= 0.2.0)
       chr (>= 0.4.0)
       feedjira
@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: git://github.com/slate-studio/chr.git
-  revision: 7e3f9d3404ef61e390253f96ac577f565fbe932a
+  revision: 6ae40d7f4758664399aba04302bdea602f71dea5
   specs:
     chr (0.4.13)
       bourbon
@@ -117,7 +117,7 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bourbon (4.2.5)
+    bourbon (4.2.6)
       sass (~> 3.4)
       thor (~> 0.19)
     bson (3.2.6)
@@ -312,7 +312,7 @@ GEM
     mini_magick (4.3.6)
     mini_portile (0.6.2)
     minitest (5.8.1)
-    mongo (2.1.1)
+    mongo (2.1.2)
       bson (~> 3.0)
     mongoid (5.0.0)
       activemodel (~> 4.0)
