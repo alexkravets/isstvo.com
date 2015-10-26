@@ -2,6 +2,7 @@
 .header {
   @include position(fixed, 0 null null 0);
   background-color : $sidebar-bg-color;
+  border-top       : 3px solid $link-color;
   text-align       : center;
   height           : 100%;
   width            : 16em;

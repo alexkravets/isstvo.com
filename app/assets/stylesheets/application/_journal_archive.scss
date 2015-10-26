@@ -1,0 +1,33 @@
+.journal-archive {
+  border-top : 2px solid $sidebar-bg-color;
+  margin     : 0 0 10em 16em;
+}
+
+.journal-archive-index {
+  list-style : none;
+  margin-top : 3em;
+}
+
+.journal-archive-item {
+  line-height : 2;
+
+  a {
+    padding-bottom : 2px;
+    border-bottom  : 1px dotted lighten($base-color, 60%);
+    font-size      : .9em;
+    color          : $base-color;
+
+    &:hover {
+      text-decoration : none;
+      color           : $link-color;
+    }
+  }
+
+  time {
+    text-transform : uppercase;
+    letter-spacing : 1px;
+    font-size      : .75em;
+    opacity        : .5;
+    float          : right;
+  }
+}

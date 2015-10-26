@@ -9,8 +9,8 @@ class @JournalMeta
 
 
   _set_published_at: ->
-    $('.journal-page-published-at').each (i, el) =>
-      published_at = $(el).data 'published-at'
+    $('time').each (i, el) =>
+      published_at = $(el).attr 'datetime'
       m = moment(published_at).utcOffset(@tzOffset)
       format = @_smart_datetime_format(m)
       published_at = m.format(format)
@@ -19,6 +19,6 @@ class @JournalMeta
 
   _smart_datetime_format: (momentObject) ->
     if @today.getFullYear() == momentObject.year()
-      return 'MMM D hh:mm'
+      return 'MMMM D'
 
-    return 'MMM D, YYYY hh:mm'
+    return 'MMMM D, YYYY'

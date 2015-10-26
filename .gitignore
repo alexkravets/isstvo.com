@@ -13,3 +13,6 @@
 /tags
 /tmp/*
 /public/loft
+pull_production.sh
+/dump
+/public/uploads
