@@ -277,6 +277,8 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
+    font-awesome-rails (4.4.0.0)
+      railties (>= 3.2, < 5.0)
     formagic (0.3.0)
       bourbon (>= 3.2)
       normalize-rails (>= 3.0)
@@ -448,6 +450,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   figaro
+  font-awesome-rails
   journal!
   jquery-rails
   loft!

@@ -24,9 +24,19 @@
     font-size   : .9em;
   }
 
-  nav a {
-    font-weight : 600;
-    line-height : 2em;
-    display     : block;
+  // nav a {
+  //   font-weight : 600;
+  //   line-height : 2em;
+  //   display     : block;
+  // }
+}
+
+.header-social {
+  a {
+    color : lighten($base-color, 60%);
+    &:hover {
+      color : $link-color;
+      text-decoration : none;
+    }
   }
 }

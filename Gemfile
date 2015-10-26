@@ -24,6 +24,8 @@ gem 'tape',    github: 'alexkravets/tape'
 gem 'rhythm',  github: 'alexkravets/rhythm'
 gem 'journal', github: 'alexkravets/journal'
 
+gem 'font-awesome-rails'
+
 # gem 'chr',      path: '../_slate/chr'
 # gem 'rhythm',   path: '../rhythm'
 # gem 'loft',     path: '../_slate/loft'
