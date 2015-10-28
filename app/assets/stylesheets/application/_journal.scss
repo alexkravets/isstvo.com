@@ -20,6 +20,13 @@
   }
 }
 
+.journal-permalink {
+  font-weight : 500;
+  &:after {
+    content: ' →';
+  }
+}
+
 .journal-page-meta,
 .journal-permalink {
   display : none;

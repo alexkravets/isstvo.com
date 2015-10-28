@@ -37,4 +37,4 @@ class @JournalImages
     if $img.height() > @max_height
       $img.css({ height: @max_height, width: 'auto' })
     else
-      $img.parent().parent().addClass('wide-paragraph')
+      #$img.parent().parent().addClass('wide-paragraph')

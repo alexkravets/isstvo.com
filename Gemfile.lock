@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/alexkravets/journal.git
-  revision: 1fc91cd4b555e344d13ec8d8138bcae842c16c73
+  revision: e7155719c5c7416933dcdc31295662479b37e10f
   specs:
-    journal (0.1.2)
+    journal (0.1.5)
       ants (>= 0.2.0)
       chr (>= 0.4.0)
       mongoid-autoinc (>= 4.0.0)

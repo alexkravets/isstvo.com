@@ -19,7 +19,7 @@ class @JournalVideos
 
 
   _embed_youtube_video: ($paragraph, youtube_id) ->
-    $paragraph.addClass 'wide-paragraph'
+    # $paragraph.addClass 'wide-paragraph'
     width  = $paragraph.width()
     height = width * 480 / 860 # default youtube size
     url    = "//www.youtube.com/embed/#{ youtube_id }"
