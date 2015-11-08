@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :assets,    controller: 'assets'    # Loft::Asset
 
     # settings
+    resources :menus,     controller: 'menus'    # Ants::Menus
     resources :admins,    controller: 'admins'    # Ants::Admin
     resources :redirects, controller: 'redirects' # Ants::Redirect
   end

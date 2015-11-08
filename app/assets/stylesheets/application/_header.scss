@@ -23,12 +23,18 @@
     margin-top  : .75em;
     font-size   : .9em;
   }
+}
 
-  // nav a {
-  //   font-weight : 600;
-  //   line-height : 2em;
-  //   display     : block;
-  // }
+.header-menu {
+  a:last-child {
+    margin-bottom: 5em;
+  }
+
+  a {
+    font-weight : 600;
+    line-height : 2em;
+    display     : block;
+  }
 }
 
 .header-social {

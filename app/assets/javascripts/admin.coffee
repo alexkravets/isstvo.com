@@ -16,6 +16,7 @@
     loft:    new Loft()
     settings:
       items:
+        main_menu: new AntsMenu('Menu', '/admin/menus/main-menu')
         admins:    new AntsAdmins()
         redirects: new AntsRedirects()
 

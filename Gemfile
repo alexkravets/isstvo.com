@@ -31,6 +31,7 @@ gem 'font-awesome-rails'
 # gem 'loft',     path: '../_slate/loft'
 # gem 'formagic', path: '../_slate/formagic'
 # gem 'journal',  path: '../journal'
+# gem 'tape',  path: '../tape'
 
 group :development do
   gem 'spring'
