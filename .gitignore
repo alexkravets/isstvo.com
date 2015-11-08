@@ -16,3 +16,4 @@
 pull_production.sh
 /dump
 /public/uploads
+vendor/bundle
