@@ -87,6 +87,10 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host:  ENV.fetch("HOST")  }
 
   config.action_mailer.asset_host = "http://#{ ENV.fetch("HOST") }"
+
+  config.middleware.insert_before ActionDispatch::SSL, Rack::HostRedirect, {
+    'www.isstvo.com' => 'isstvo.com'
+  }
 end
 
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i

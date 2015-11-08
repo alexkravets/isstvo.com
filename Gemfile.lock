@@ -249,6 +249,8 @@ GEM
     rack-canonical-host (0.1.0)
       addressable
       rack (~> 1.0)
+    rack-host-redirect (1.2.1)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rack-timeout (0.3.2)
@@ -347,6 +349,7 @@ DEPENDENCIES
   mongosteen
   quiet_assets
   rack-canonical-host
+  rack-host-redirect
   rack-timeout
   rails (~> 4.2.4)
   rails_12factor

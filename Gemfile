@@ -13,6 +13,7 @@ gem 'meta-tags'
 gem 'awesome_print'
 gem 'bson_ext'
 gem 'mongoid', '~> 5.0'
+gem 'rack-host-redirect'
 # This `autoinc` branch supports mongoid 5.0, required by Loft
 gem 'mongoid-autoinc', github: 'suweller/mongoid-autoinc'
 gem 'mongosteen'
