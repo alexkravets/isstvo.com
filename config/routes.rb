@@ -35,10 +35,11 @@ Rails.application.routes.draw do
   #-------------------------------------------#
   root 'journal_posts#index'
 
-  get '/:slug'        => 'journal_pages#show',     as: :journal_page,         :constraints => Constraints::JournalPages
-  get '/:hex/preview' => 'journal_posts#preview',  as: :preview_journal_post
-  get '/:hex/:slug'   => 'journal_posts#show',     as: :journal_post,         :constraints => Constraints::JournalPosts
-  get '/:hex'         => 'journal_posts#redirect', as: :journal_post_short,   :constraints => Constraints::JournalPosts
+  get '/:slug/preview' => 'journal_pages#preview',  as: :preview_journal_page, :constraints => Constraints::JournalPages
+  get '/:slug'         => 'journal_pages#show',     as: :show_journal_page,    :constraints => Constraints::JournalPages
+  get '/:hex/preview'  => 'journal_posts#preview',  as: :preview_journal_post
+  get '/:hex/:slug'    => 'journal_posts#show',     as: :show_journal_post,    :constraints => Constraints::JournalPosts
+  get '/:hex'          => 'journal_posts#redirect', as: :journal_post_short,   :constraints => Constraints::JournalPosts
 
   #-------------------------------------------#
   # Redirects, ideally this should go last
