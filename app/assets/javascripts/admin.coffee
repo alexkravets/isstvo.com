@@ -15,9 +15,10 @@
     pages:   new JournalPages()
     loft:    new Loft()
     settings:
+      menuIcon: 'cog'
       items:
         main_menu: new AntsMenu('Menu', '/admin/menus/main-menu')
-        admins:    new AntsAdmins()
+        admins:    new AntsAdminUsers()
         redirects: new AntsRedirects()
 
   return { modules: all_modules }
@@ -27,6 +28,4 @@ $ ->
     config = veniceConfig(response)
 
     chr.start('Venice', config)
-
-    # append signout button to the end of sidebar menu
-    $('a[data-method=delete]').appendTo(".sidebar .menu").show()
+    new AntsProfile()

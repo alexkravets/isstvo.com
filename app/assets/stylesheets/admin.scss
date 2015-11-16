@@ -3,6 +3,7 @@
 @import "ants";
 @import "tape";
 @import "journal";
+@import "font-awesome";
 
 @include font-face('Proxima Nova', "ProximaNovaRegular",  $regular,  $asset-pipeline: true, $file-formats: eot woff ttf);
 @include font-face('Proxima Nova', "ProximaNovaSemibold", $semibold, $asset-pipeline: true, $file-formats: eot woff ttf);
@@ -18,11 +19,12 @@
   }
 
   .menu {
-    .menu-loft, .menu-settings, .menu-logout {
+    .menu-loft, .menu-settings {
       color : darken($sidebar-color, 30%);
     }
   }
 
+  .menu,
   .menu-loft {
     margin-top : 1em;
   }

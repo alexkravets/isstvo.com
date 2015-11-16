@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/alexkravets/journal.git
-  revision: 419f756f994c9c0bd1bc5e45e56e9919892daf24
+  revision: f34432226d005e70122e632607a0d32131031850
   specs:
-    journal (0.1.5)
+    journal (0.1.6)
       ants (>= 0.2.0)
       chr (>= 0.4.0)
       mongoid-autoinc (>= 4.0.0)
@@ -17,9 +17,9 @@ GIT
 
 GIT
   remote: git://github.com/alexkravets/tape.git
-  revision: c77c82b1890bc0f45e8ffff8a97fd53ccd0baed9
+  revision: f4521ec685218fef8da71f191aea42e8b3693f3e
   specs:
-    tape (0.1.3)
+    tape (0.1.4)
       ants (>= 0.2.0)
       chr (>= 0.4.0)
       feedjira
@@ -28,29 +28,16 @@ GIT
 
 GIT
   remote: git://github.com/slate-studio/chr.git
-  revision: 4385844a185516d6886dd20f307a06191c29a111
+  revision: 5e465055b29551b30e8852ac3294a21e1729144f
   specs:
-    chr (0.4.15)
+    chr (0.4.16)
       bourbon
       coffee-rails (>= 4.0)
+      font-awesome-rails
       formagic (>= 0.2.8)
       jquery-rails
-      rails (~> 4.2.4)
+      rails (~> 4.2.5)
       sass-rails
-
-GIT
-  remote: git://github.com/slate-studio/loft.git
-  revision: b825c17b6d109b6f400225baaf75bcfccee7c7b5
-  specs:
-    loft (0.2.5)
-      ants (>= 0.2.0)
-      carrierwave-mongoid (>= 0.7.1)
-      chr (>= 0.4.0)
-      mini_magick (>= 4.1.0)
-      mongoid-autoinc (>= 4.0.0)
-      mongoid-grid_fs (>= 2.1.0)
-      mongoid_search (>= 0.3)
-      mongosteen (>= 0.1.8)
 
 GIT
   remote: git://github.com/suweller/mongoid-autoinc.git
@@ -98,7 +85,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    ants (0.2.7)
+    ants (0.3.0)
       devise
       mongoid (>= 4.0)
       mongoid-slug (>= 4.0.0)
@@ -190,6 +177,15 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.10.0)
+    loft (0.2.6)
+      ants (>= 0.2.0)
+      carrierwave-mongoid (>= 0.7.1)
+      chr (>= 0.4.0)
+      mini_magick (>= 4.1.0)
+      mongoid-autoinc (>= 4.0.0)
+      mongoid-grid_fs (>= 2.1.0)
+      mongoid_search (>= 0.3)
+      mongosteen (>= 0.1.8)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -225,12 +221,12 @@ GEM
     mongoid_search (0.3.2)
       fast-stemmer (~> 1.0.0)
       mongoid (>= 3.0.0)
-    mongosteen (0.1.8)
-      has_scope (> 0.5)
+    mongosteen (0.2.0)
+      has_scope (>= 0.6)
       inherited_resources (>= 1.6)
       kaminari (>= 0.16)
-      mongoid (>= 4.0)
-      mongoid-history (>= 0.4.5)
+      mongoid (>= 5.0)
+      mongoid-history (>= 0.5.0)
       mongoid_search (>= 0.3)
     multipart-post (2.0.0)
     nokogiri (1.6.6.2)
@@ -334,10 +330,9 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   figaro
-  font-awesome-rails
   journal!
   jquery-rails
-  loft!
+  loft (>= 0.2.6)
   meta-tags
   mongoid (~> 5.0)
   mongoid-autoinc!

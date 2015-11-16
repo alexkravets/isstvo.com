@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   #-------------------------------------------#
   # Admin
   #-------------------------------------------#
-  devise_for :admins,
+  devise_for :admin_users,
     path: 'admin',
     controllers: {
       passwords: 'admin/devise_overrides/passwords',
@@ -10,23 +10,23 @@ Rails.application.routes.draw do
     }
 
   namespace :admin do
-    get '/'               => 'base#index'
+    get '/' => 'base#index'
     get '/bootstrap.json' => 'base#bootstrap_data'
 
     # rss
     resources :tape_subscriptions, controller: 'tape_subscriptions'
-    resources :tape_posts,         controller: 'tape_posts'
+    resources :tape_posts, controller: 'tape_posts'
 
     # journal
     resources :journal_posts, controller: 'journal_posts'
     resources :journal_pages, controller: 'journal_pages'
 
     # files
-    resources :assets,    controller: 'assets'    # Loft::Asset
+    resources :assets, controller: 'assets' # Loft::Asset
 
     # settings
-    resources :menus,     controller: 'menus'    # Ants::Menus
-    resources :admins,    controller: 'admins'    # Ants::Admin
+    resources :menus, controller: 'menus' # Ants::Menus
+    resources :admin_users, controller: 'admin_users' # Ants::AdminUser
     resources :redirects, controller: 'redirects' # Ants::Redirect
   end
 
@@ -45,5 +45,4 @@ Rails.application.routes.draw do
   # Redirects, ideally this should go last
   #-------------------------------------------#
   get "/*id" => 'redirects#show', :constraints => Constraints::Redirects
-
 end
