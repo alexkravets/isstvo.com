@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   private
     def settings
-      @site_url          = 'http://www.isstvo.com'
+      @site_url          = 'http://isstvo.com'
       @site_name         = 'isstvo.com'
       @site_title        = 'Stanislav Kravets'
       @site_description  = 'Stanislav Kravets is a modern art painter from Kyiv, Ukraine.'

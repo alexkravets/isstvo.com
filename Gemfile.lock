@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/alexkravets/journal.git
-  revision: f34432226d005e70122e632607a0d32131031850
+  revision: 52336f2f6d207129a6564b0e8b888ecd93d98375
   specs:
-    journal (0.1.6)
+    journal (0.1.7)
       ants (>= 0.2.0)
       chr (>= 0.4.0)
       mongoid-autoinc (>= 4.0.0)
@@ -28,9 +28,9 @@ GIT
 
 GIT
   remote: git://github.com/slate-studio/chr.git
-  revision: 5e465055b29551b30e8852ac3294a21e1729144f
+  revision: 1c7c2ee82b92fd50827107ba06d756a544c72df4
   specs:
-    chr (0.4.16)
+    chr (0.4.17)
       bourbon
       coffee-rails (>= 4.0)
       font-awesome-rails
@@ -85,7 +85,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    ants (0.3.0)
+    ants (0.3.1)
       devise
       mongoid (>= 4.0)
       mongoid-slug (>= 4.0.0)
