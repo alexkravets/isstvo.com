@@ -28,9 +28,9 @@ GIT
 
 GIT
   remote: git://github.com/slate-studio/chr.git
-  revision: 1c7c2ee82b92fd50827107ba06d756a544c72df4
+  revision: 43bf439b8efeb77f67ec9221bd28f279f2062bd1
   specs:
-    chr (0.4.17)
+    chr (0.4.19)
       bourbon
       coffee-rails (>= 4.0)
       font-awesome-rails
@@ -41,10 +41,10 @@ GIT
 
 GIT
   remote: git://github.com/suweller/mongoid-autoinc.git
-  revision: 6d921e2efe01ece545983c27abfd0d76e1d180e5
+  revision: 4b4f7571bfb3a7f9610494a203aea9ab9b4e93b3
   specs:
     mongoid-autoinc (5.0.0)
-      mongoid (~> 5.0.0.beta)
+      mongoid (~> 5.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -85,7 +85,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    ants (0.3.1)
+    ants (0.3.2)
       devise
       mongoid (>= 4.0)
       mongoid-slug (>= 4.0.0)
@@ -177,10 +177,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.10.0)
-    loft (0.2.6)
+    loft (0.2.7)
       ants (>= 0.2.0)
       carrierwave-mongoid (>= 0.7.1)
-      chr (>= 0.4.0)
+      chr (>= 0.4.19)
       mini_magick (>= 4.1.0)
       mongoid-autoinc (>= 4.0.0)
       mongoid-grid_fs (>= 2.1.0)
@@ -195,7 +195,7 @@ GEM
     mime-types (2.6.2)
     mini_magick (4.3.6)
     mini_portile (0.6.2)
-    minitest (5.8.2)
+    minitest (5.8.3)
     mongo (2.1.2)
       bson (~> 3.0)
     mongoid (5.0.1)
@@ -229,7 +229,7 @@ GEM
       mongoid-history (>= 0.5.0)
       mongoid_search (>= 0.3)
     multipart-post (2.0.0)
-    nokogiri (1.6.6.2)
+    nokogiri (1.6.6.4)
       mini_portile (~> 0.6.0)
     normalize-rails (3.0.3)
     origin (2.1.1)
@@ -288,7 +288,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     sax-machine (1.3.2)
-    spring (1.4.1)
+    spring (1.4.4)
     sprockets (3.4.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
@@ -304,7 +304,7 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (5.0.0)
+    unicorn (5.0.1)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
