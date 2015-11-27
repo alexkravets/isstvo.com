@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     # journal
     resources :journal_posts, controller: 'journal_posts'
     resources :journal_pages, controller: 'journal_pages'
+    resources :journal_categories, controller: 'journal_categories'
 
     # files
     resources :assets, controller: 'assets' # Loft::Asset

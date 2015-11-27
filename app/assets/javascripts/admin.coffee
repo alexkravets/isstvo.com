@@ -7,18 +7,24 @@
 #= require tape
 #= require journal
 
+@addWebsiteLink = ->
+  $link =$ """<a href='/' target='_blank'>
+                <i class='fa fa-home fa-fw'></i> View Site
+              </a>"""
+  chr.$mainMenu.prepend $link
+
 @veniceConfig = (data) ->
   modules     = {}
   all_modules =
-    tape:    new Tape()
-    journal: new JournalPosts()
-    pages:   new JournalPages()
-    loft:    new Loft()
+    tape: new Tape('Reader')
+    posts: new JournalPosts()
+    pages: new JournalPages()
+    loft: new Loft()
     settings:
       menuIcon: 'cog'
       items:
         main_menu: new AntsMenu('Menu', '/admin/menus/main-menu')
-        admins:    new AntsAdminUsers()
+        admins: new AntsAdminUsers()
         redirects: new AntsRedirects()
 
   return { modules: all_modules }
@@ -29,3 +35,4 @@ $ ->
 
     chr.start('Venice', config)
     new AntsProfile()
+    addWebsiteLink()

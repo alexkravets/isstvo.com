@@ -11,21 +11,16 @@
 /* Tablet ------------------------------------------------------------------ */
 @media #{$tablet} {
   .sidebar, .header, .list:not(.list-aside) .items {
-    font-family : "Proxima Nova", 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-family: "Proxima Nova", 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
   }
 
   .tape .list.tape .items {
-    font-family : $base-font-family;
-  }
-
-  .menu {
-    .menu-loft, .menu-settings {
-      color : darken($sidebar-color, 30%);
-    }
+    font-family: $base-font-family;
   }
 
   .menu,
-  .menu-loft {
-    margin-top : 1em;
+  .menu-posts,
+  .menu-settings {
+    margin-top: 1em;
   }
 }
