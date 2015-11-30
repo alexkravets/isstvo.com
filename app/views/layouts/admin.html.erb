@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <%= display_meta_tags site: @site_name, title: 'Venice' %>
+  <%= display_meta_tags site: @settings[:general][:website_title], title: 'Venice' %>
 
   <%= stylesheet_link_tag :admin, media: 'all' %>
   <%= csrf_meta_tags %>

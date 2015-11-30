@@ -17,7 +17,7 @@ gem 'rack-host-redirect'
 # This `autoinc` branch supports mongoid 5.0, required by Loft
 gem 'mongoid-autoinc', github: 'suweller/mongoid-autoinc'
 gem 'mongosteen'
-# gem 'formagic', path: '../_slate/formagic'
+gem 'formagic'
 gem 'chr'
 gem 'ants'
 gem 'loft'

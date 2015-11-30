@@ -8,10 +8,12 @@
 @include font-face('Proxima Nova', "ProximaNovaRegular",  $regular,  $asset-pipeline: true, $file-formats: eot woff ttf);
 @include font-face('Proxima Nova', "ProximaNovaSemibold", $semibold, $asset-pipeline: true, $file-formats: eot woff ttf);
 
+$proxima-nova-family: "Proxima Nova", 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+
 /* Tablet ------------------------------------------------------------------ */
 @media #{$tablet} {
   .sidebar, .header, .list:not(.list-aside) .items {
-    font-family: "Proxima Nova", 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-family: $proxima-nova-family;
   }
 
   .tape .list.tape .items {

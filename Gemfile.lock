@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/alexkravets/journal.git
-  revision: 9119fcd462e07a442bb8b03fe00f7f64095a420e
+  revision: 0b4d3b0a7b35ccfd51d613b6e95772ed4041152f
   specs:
-    journal (0.2.0)
+    journal (0.2.1)
       ants (>= 0.2.0)
       chr (>= 0.4.0)
       mongoid-autoinc (>= 4.0.0)
@@ -17,9 +17,9 @@ GIT
 
 GIT
   remote: git://github.com/alexkravets/tape.git
-  revision: 0866fdf21033c968c30cfa0ec90623f6423d33d1
+  revision: ed5e9fb94f6918ba851c85bdbfcae52d5e6c6209
   specs:
-    tape (0.1.5)
+    tape (0.1.6)
       ants (>= 0.2.0)
       chr (>= 0.4.0)
       feedjira
@@ -72,7 +72,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    ants (0.3.3)
+    ants (0.3.4)
       devise
       mongoid (>= 4.0)
       mongoid-slug (>= 4.0.0)
@@ -100,11 +100,11 @@ GEM
       carrierwave (>= 0.8.0, < 0.11.0)
       mongoid (>= 3.0, < 6.0)
       mongoid-grid_fs (>= 1.3, < 3.0)
-    chr (0.4.25)
+    chr (0.5.0)
       bourbon
       coffee-rails (>= 4.0)
       font-awesome-rails
-      formagic (>= 0.2.8)
+      formagic (>= 0.3.4)
       jquery-rails
       rails (~> 4.2.5)
       sass-rails
@@ -149,7 +149,7 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.5.0.0)
       railties (>= 3.2, < 5.0)
-    formagic (0.3.3)
+    formagic (0.3.4)
       bourbon (>= 3.2)
       normalize-rails (>= 3.0)
     globalid (0.3.6)
@@ -189,7 +189,7 @@ GEM
       actionpack (>= 3.0.0)
     mime-types (2.99)
     mini_magick (4.3.6)
-    mini_portile (0.6.2)
+    mini_portile2 (2.0.0)
     minitest (5.8.3)
     mongo (2.1.2)
       bson (~> 3.0)
@@ -224,8 +224,8 @@ GEM
       mongoid-history (>= 0.5.0)
       mongoid_search (>= 0.3)
     multipart-post (2.0.0)
-    nokogiri (1.6.6.4)
-      mini_portile (~> 0.6.0)
+    nokogiri (1.6.7)
+      mini_portile2 (~> 2.0.0.rc2)
     normalize-rails (3.0.3)
     origin (2.1.1)
     orm_adapter (0.5.0)
@@ -283,7 +283,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     sax-machine (1.3.2)
-    spring (1.4.4)
+    spring (1.5.0)
     sprockets (3.4.1)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
@@ -325,6 +325,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   figaro
+  formagic
   journal!
   jquery-rails
   loft

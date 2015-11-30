@@ -7,6 +7,8 @@
 #= require tape
 #= require journal
 
+#= require_tree ./admin
+
 @addWebsiteLink = ->
   $link =$ """<a href='/' target='_blank'>
                 <i class='fa fa-home fa-fw'></i> View Site
@@ -20,12 +22,7 @@
     posts: new JournalPosts()
     pages: new JournalPages()
     loft: new Loft()
-    settings:
-      menuIcon: 'cog'
-      items:
-        main_menu: new AntsMenu('Menu', '/admin/menus/main-menu')
-        admins: new AntsAdminUsers()
-        redirects: new AntsRedirects()
+    settings: settingsConfig()
 
   return { modules: all_modules }
 

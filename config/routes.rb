@@ -23,12 +23,13 @@ Rails.application.routes.draw do
     resources :journal_categories, controller: 'journal_categories'
 
     # files
-    resources :assets, controller: 'assets' # Loft::Asset
+    resources :assets, controller: 'assets'
 
     # settings
-    resources :menus, controller: 'menus' # Ants::Menus
-    resources :admin_users, controller: 'admin_users' # Ants::AdminUser
-    resources :redirects, controller: 'redirects' # Ants::Redirect
+    resources :settings_objects, controller: 'settings_objects'
+    resources :menus, controller: 'menus'
+    resources :admin_users, controller: 'admin_users'
+    resources :redirects, controller: 'redirects'
   end
 
   #-------------------------------------------#

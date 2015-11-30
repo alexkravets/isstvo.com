@@ -1,11 +1,11 @@
 <aside class='header'>
   <figure>
     <%= link_to root_path do %>
-      <%= image_tag @header_image_url, alt: @site_title %>
+      <%= sidebar_image_tag %>
     <% end %>
 
     <figcaption>
-      <%= @header_tagline.html_safe %>
+      <%= sidebar_tagline %>
     </figcaption>
   </figure>
 
@@ -14,20 +14,6 @@
   </nav>
 
   <nav class='header-social'>
-    <%= link_to 'https://www.facebook.com/stas.kravets', target: '_blank' do %>
-      <%= fa_stacked_icon 'facebook inverse', base: 'circle', class: 'fa-1x' %>
-    <% end %>
-
-    <%= link_to 'https://vk.com/id5428998', target: '_blank' do %>
-      <%= fa_stacked_icon 'vk inverse', base: 'circle', class: 'fa-1x' %>
-    <% end %>
-
-    <%= link_to 'https://www.behance.net/tomorrowfriday', target: '_blank' do %>
-      <%= fa_stacked_icon 'behance inverse', base: 'circle', class: 'fa-1x' %>
-    <% end %>
-
-    <%= link_to 'https://www.pinterest.com/staskravets/', target: '_blank' do %>
-      <%= fa_stacked_icon 'pinterest inverse', base: 'circle', class: 'fa-1x' %>
-    <% end %>
+    <%= social_links %>
   </nav>
 </aside>
