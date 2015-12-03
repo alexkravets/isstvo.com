@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/alexkravets/journal.git
-  revision: 0b4d3b0a7b35ccfd51d613b6e95772ed4041152f
+  revision: 8b03d57ac99ae25ddc7a899c6869c52c3d225b92
   specs:
-    journal (0.2.1)
+    journal (0.2.2)
       ants (>= 0.2.0)
       chr (>= 0.4.0)
       mongoid-autoinc (>= 4.0.0)
@@ -25,13 +25,6 @@ GIT
       feedjira
       mongosteen (>= 0.1.8)
       nokogiri
-
-GIT
-  remote: git://github.com/suweller/mongoid-autoinc.git
-  revision: 4b4f7571bfb3a7f9610494a203aea9ab9b4e93b3
-  specs:
-    mongoid-autoinc (5.0.0)
-      mongoid (~> 5.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -72,7 +65,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    ants (0.3.4)
+    ants (0.3.5)
       devise
       mongoid (>= 4.0)
       mongoid-slug (>= 4.0.0)
@@ -100,7 +93,7 @@ GEM
       carrierwave (>= 0.8.0, < 0.11.0)
       mongoid (>= 3.0, < 6.0)
       mongoid-grid_fs (>= 1.3, < 3.0)
-    chr (0.5.0)
+    chr (0.5.1)
       bourbon
       coffee-rails (>= 4.0)
       font-awesome-rails
@@ -198,6 +191,8 @@ GEM
       mongo (~> 2.1)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
+    mongoid-autoinc (5.0.1)
+      mongoid (~> 5.0.0)
     mongoid-compatibility (0.3.1)
       activesupport
       mongoid (>= 2.0)
@@ -331,7 +326,7 @@ DEPENDENCIES
   loft
   meta-tags
   mongoid (~> 5.0)
-  mongoid-autoinc!
+  mongoid-autoinc
   mongosteen
   quiet_assets
   rack-canonical-host
