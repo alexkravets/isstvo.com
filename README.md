@@ -1,4 +1,5 @@
 # Venice
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 *Where art meets technology.*
 
