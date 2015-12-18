@@ -10,19 +10,17 @@
   "repository": "https://github.com/alexkravets/isstvo.com",
   "logo": "https://avatars2.githubusercontent.com/u/477851?v=3&s=400",
   "success_url": "/",
-  "scripts": {
-    "postdeploy": "bundle exec rake heroku:after_deploy"
-    },
+  "scripts": {},
   "env": {
-    "ASSET_HOST": "test",
-    "AWS_ACCESS_KEY_ID": "test",
-    "AWS_SECRET_ACCESS_KEY": "test",
-    "FOG_DIRECTORY": "test",
-    "HOST": "isstvo.herokuapp.com",
+    "ASSET_HOST": "placeholder",
+    "AWS_ACCESS_KEY_ID": "placeholder",
+    "AWS_SECRET_ACCESS_KEY": "placeholder",
+    "FOG_DIRECTORY": "placeholder",
+    "HOST": "placeholder",
     "SMTP_ADDRESS": "smtp.sendgrid.net",
     "SMTP_DOMAIN": "heroku.com",
-    "SMTP_PASSWORD": "test",
-    "SMTP_USERNAME": "test"
+    "SMTP_PASSWORD": "placeholder",
+    "SMTP_USERNAME": "placeholder"
   },
   "image": "heroku/ruby",
   "addons": [
