@@ -1,5 +1,4 @@
 # Venice
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 *Where art meets technology.*
 
@@ -30,20 +29,8 @@ is [purposefully excluded from the project's `Gemfile`][exclude].
 
 ## Deploying to Heroku
 
-This project is ready to deploy to [Heroku](https://heroku.com), still before that
-please install plugins for mongodb, email & make sure these variables are set
-in your app ENV:
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-    MONGODB_URI
-    ASSET_HOST
-    AWS_ACCESS_KEY_ID
-    AWS_SECRET_ACCESS_KEY
-    FOG_DIRECTORY
-    HOST
-    SMTP_ADDRESS
-    SMTP_DOMAIN
-    SMTP_PASSWORD
-    SMTP_USERNAME
-
+After deploy run `rake heroku:after_deploy` to setup env. variables and s3[optional]
 
 Good luck, have fun, program well and program in style!

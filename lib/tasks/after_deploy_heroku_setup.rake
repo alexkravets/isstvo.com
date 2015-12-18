@@ -54,7 +54,8 @@ namespace :heroku do
     heroku.put_config_vars(app_name, 'SMTP_PASSWORD' => sendgrid_password)
     heroku.put_config_vars(app_name, 'MONGODB_URI' => mongolab_uri)
     heroku.put_config_vars(app_name, 'HOST' => domain)
-    AdminUser.create!(name: 'Admin', email: 'user@example.com', password: 'password')
+    # system("echo 'AdminUser.create!(name: 'Admin', email: 'user@example.com', password: 'password'); exit' | heroku run rails console")
+
     if access_key_id && secret_access_key
       setup_s3(app_name, heroku, access_key_id, secret_access_key)
     end
