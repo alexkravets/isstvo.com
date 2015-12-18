@@ -23,6 +23,8 @@ gem 'loft'
 gem 'tape', github: 'alexkravets/tape'
 gem 'rhythm', github: 'alexkravets/rhythm'
 gem 'journal', github: 'alexkravets/journal'
+gem 'aws-sdk', '~> 2'
+gem 'heroku-api'
 
 group :development do
   gem 'spring'
