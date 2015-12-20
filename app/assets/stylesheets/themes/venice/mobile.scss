@@ -2,10 +2,6 @@
 $mobile: "screen and (max-width:899px)";
 @media #{$mobile} {
 /* Layout ------------------------------------------------------------------ */
-  .container {
-    width: 100%;
-  }
-
   .header {
     text-align: center;
     padding: 2em 3em 1em;
@@ -56,10 +52,6 @@ $mobile: "screen and (max-width:899px)";
 
   .journal-page-body {
     margin-top: -1em;
-  }
-
-  .journal-page-body footer a {
-    margin-right: -0.5em;
   }
 
 /* Theme ------------------------------------------------------------------- */
