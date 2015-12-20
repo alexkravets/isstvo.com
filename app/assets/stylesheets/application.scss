@@ -2,3 +2,14 @@
 @import "normalize-rails";
 @import "font-awesome";
 @import "themes/venice";
+
+figure {
+  margin: 0;
+
+  figcaption {
+    font-style: italic;
+    font-size: .9em;
+    opacity: .75;
+    margin-top: 0.25em;
+  }
+}

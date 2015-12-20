@@ -88,9 +88,9 @@ Rails.application.configure do
 
   config.action_mailer.asset_host = "http://#{ ENV.fetch("HOST") }"
 
-  # config.middleware.use Rack::HostRedirect, {
-  #   'www.example.com' => 'example.com'
-  # }
+  config.middleware.use Rack::HostRedirect, {
+    'www.isstvo.com' => 'isstvo.com'
+  }
 end
 
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
