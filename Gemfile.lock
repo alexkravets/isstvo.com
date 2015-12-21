@@ -1,9 +1,10 @@
 GIT
   remote: git://github.com/alexkravets/journal.git
-  revision: 1d462cc78b701fc053b12f04eeae8a75c3648102
+  revision: 534c5bbffd5143948439955e03ebb65e32bb5fd0
   specs:
-    journal (0.3.4)
-      chr (>= 0.5.4)
+    journal (0.3.5)
+      ants (>= 0.3.12)
+      chr (>= 0.5.5)
       loft (>= 0.3.1)
       mongosteen (>= 0.2.0)
 
@@ -57,7 +58,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    ants (0.3.11)
+    ants (0.3.12)
       devise
       meta-tags
       mongoid (>= 4.0)
@@ -86,11 +87,11 @@ GEM
       carrierwave (>= 0.8.0, < 0.11.0)
       mongoid (>= 3.0, < 6.0)
       mongoid-grid_fs (>= 1.3, < 3.0)
-    chr (0.5.4)
+    chr (0.5.5)
       bourbon
       coffee-rails (>= 4.0)
       font-awesome-rails
-      formagic (>= 0.3.7)
+      formagic (>= 0.3.8)
       jquery-rails
       rails (~> 4.2.5)
       sass-rails
@@ -136,7 +137,7 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.5.0.0)
       railties (>= 3.2, < 5.0)
-    formagic (0.3.7)
+    formagic (0.3.8)
       bourbon (>= 3.2)
       normalize-rails (>= 3.0)
     globalid (0.3.6)
