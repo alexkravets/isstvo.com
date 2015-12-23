@@ -16,7 +16,6 @@ gem "mongoid", "~> 5.0"
 gem "fog"
 gem "fog-aws"
 gem "rack-host-redirect"
-gem "ants", path: "../ants"
 gem "tape-chr"
 gem "journal-chr"
 
