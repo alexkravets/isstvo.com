@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+begin
+  require 'venice/kit'
+rescue LoadError => e
+warn 'Could not load "venice/kit"'
+  exit -1
+end
+
+Venice::Kit.start

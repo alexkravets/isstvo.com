@@ -9,27 +9,31 @@
 
 #= require_tree ./admin
 
+@redirectToSignIn = ->
+  signinPath = "/admin/sign_in"
+  if window.location.hash
+    returnTo = window.location.hash.substring(1)
+    signinPath = "#{signinPath}?return_to=#{returnTo}"
+  window.location = signinPath
+
 @addWebsiteLink = ->
   $link =$ """<a href='/' target='_blank'>
                 <i class='fa fa-home fa-fw'></i> View Site
               </a>"""
   chr.$mainMenu.prepend $link
 
-@veniceConfig = (data) ->
-  modules     = {}
-  all_modules =
-    tape: new Tape('Reader')
-    posts: new JournalPosts()
-    pages: new JournalPages()
-    loft: new Loft()
-    settings: settingsConfig()
-
-  return { modules: all_modules }
-
 $ ->
-  $.get '/admin/bootstrap.json', (response) ->
-    config = veniceConfig(response)
+  $.get("/admin/bootstrap.json", (response) ->
+    chr.start 'Venice',
+      modules:
+        tape: new Tape('Reader')
+        posts: new JournalPosts()
+        pages: new JournalPages()
+        loft: new Loft()
+        settings: settingsConfig()
 
-    chr.start('Venice', config)
     new AntsProfile()
     addWebsiteLink()
+  ).fail (response) ->
+    if response.status == 401
+      redirectToSignIn(response)

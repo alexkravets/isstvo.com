@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+gemspec
 ruby "2.2.3"
 
 gem "rails", "~> 4.2.5"
@@ -12,13 +13,17 @@ gem "rack-canonical-host"
 gem "awesome_print"
 gem "bson_ext"
 gem "mongoid", "~> 5.0"
+gem "fog"
+gem "fog-aws"
 gem "rack-host-redirect"
-gem "tape", github: "alexkravets/tape"
-gem "journal", github: "alexkravets/journal"
+gem "ants", path: "../ants"
+gem "tape-chr"
+gem "journal-chr"
 
 group :development do
   gem "spring"
   gem "web-console"
+  gem "heroku"
 end
 
 group :development, :test do

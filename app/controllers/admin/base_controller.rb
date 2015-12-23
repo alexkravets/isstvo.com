@@ -3,7 +3,7 @@ module Admin
     include LoadSettings
 
     protect_from_forgery
-    before_action :authenticate_admin_user!
+    before_action :authenticate_admin_user!, except: %w(index)
     before_action :load_settings, only: %w(index)
 
     def index
