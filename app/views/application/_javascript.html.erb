@@ -1,4 +1,7 @@
 <%= javascript_include_tag :application %>
+<%= javascript_tag do %>
+  <%= @settings[:scripts]["javascript"].html_safe %>
+<% end %>
 
 <%= yield :javascript %>
 

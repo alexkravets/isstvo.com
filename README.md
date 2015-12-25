@@ -10,6 +10,7 @@ boilerplate for new Rails projects or quick prototypes.
 
 Homepage: https://github.com/alexkravets/venice
 
+
 ## Installation
 
 It assumes you have a machine equipped with Ruby & Mongodb.
@@ -26,6 +27,7 @@ manager:
   ```bash
   venice new your-project-name
   ```
+
 
 ## Shortcuts
 
@@ -54,7 +56,8 @@ finished, please login and create a new account, then remove default one.
   rails s
   ```
 
-## Related Gems
+
+## Under the Hood
 
 Venice is based on a bunch of open source gems. You might be interested to have
 a look into those to get better understanding of how things do work inside:
@@ -73,6 +76,7 @@ concerns that are used on the backend and CMS
 Character CMS
 - [Mongosteen](https://github.com/slate-studio/mongosteen): An easy way to add
 CRUD actions for Mongoid models
+- [Devise](https://github.com/plataformatec/devise): Flexible authentication solution for Rails with Warden
 
 
 ## Contributing

@@ -6,6 +6,8 @@
 #= require ants
 #= require tape
 #= require journal
+#= require formagic/inputs/ace-css
+#= require formagic/inputs/ace-js
 
 #= require_tree ./admin
 

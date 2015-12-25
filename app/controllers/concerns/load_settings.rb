@@ -11,12 +11,18 @@ module LoadSettings
     end
 
     def build_settings_defaults
-      SettingsObject.create(title: 'general', values: {
-        website_title: '',
-        website_tagline: '',
-        website_description: '',
-        website_logo_url: '',
-        website_url: ''
+      SettingsObject.create(title: "general", values: {
+        website_title: "",
+        website_tagline: "",
+        website_description: "",
+        website_logo_url: "",
+        website_url: ""
+      })
+      SettingsObject.create(title: "styles", values: {
+        css: ""
+      })
+      SettingsObject.create(title: "scripts", values: {
+        javascript: ""
       })
     end
   end

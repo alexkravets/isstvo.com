@@ -7,3 +7,5 @@
       categories: new JournalCategories()
       admins: new AntsAdminUsers()
       redirects: new AntsRedirects()
+      css: cssSettingsConfig()
+      js: jsSettingsConfig()

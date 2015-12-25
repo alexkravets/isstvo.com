@@ -18,7 +18,21 @@ $proxima-nova-family: "Proxima Nova", 'Helvetica Neue', Helvetica, Arial, 'Lucid
     @include no-bottom-border;
     padding-left: 6em;
 
-    .label { display: none; }
+    .label {
+      display: none;
+    }
+  }
+}
+
+.js_editor_panel,
+.css_editor_panel {
+  .input-css,
+  .input-js {
+    padding-top: 0.9em;
+  }
+
+  .label {
+    display: none;
   }
 }
 

@@ -1,10 +1,3 @@
-class @GroupHeader
-  constructor: (@form, @group, name) ->
-    @$title  =$ "<span>#{ name }</span>"
-    @$header =$ """<header class='group-header'></header>"""
-    @$header.append @$title
-    @group.$el.prepend @$header
-
 @generalSettingsConfig = ->
   formSchema =
     website_settings:

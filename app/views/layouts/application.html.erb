@@ -7,6 +7,9 @@
 <!-- ====================================================================== -->
   <meta name="viewport" content="initial-scale=1" />
   <%= stylesheet_link_tag :application, media: "all" %>
+  <style>
+    <%= @settings[:styles]["css"].html_safe %>
+  </style>
 </head>
 <body class="<%= body_class %>">
   <%= render 'header' %>
@@ -16,7 +19,6 @@
   </div>
 
   <%= render 'footer' %>
-
   <%= render 'javascript' %>
 </body>
 </html>
