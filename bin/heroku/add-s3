@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+if [ "$1" == "" ] || [ "$2" == "" ]; then
+  echo "Usage: add-s3 <aws_key> <aws_secret> [aws_region]"
+  exit 1
+fi
+
+HOST=$(heroku config:get HOST)
+BUCKET="${HOST/.herokuapp.com/}"
+KEY="$1"
+SECRET="$2"
+REGION="$3"
+
+echo "Creating S3 bucket: $BUCKET"
+VARS=$(rake deploy:create_s3_bucket key="${KEY}" secret="${SECRET}" bucket="${BUCKET}" region="${REGION}")
+arr=(${VARS//\\n/ })
+AWS_ACCESS_KEY_ID="${arr[0]}"
+AWS_SECRET_ACCESS_KEY="${arr[1]}"
+
+echo "Adding S3 credentials to Heroku app ENV"
+heroku config:set AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
+                  AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
+                  FOG_DIRECTORY="${BUCKET}"

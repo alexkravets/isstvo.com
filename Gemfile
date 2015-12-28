@@ -23,6 +23,7 @@ group :development do
   gem "spring"
   gem "web-console"
   gem "heroku"
+  gem "aws-sdk"
 end
 
 group :development, :test do

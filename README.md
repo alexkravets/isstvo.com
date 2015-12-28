@@ -22,39 +22,105 @@ manager:
   gem install venice-chr
   ```
 
-2. Then kick off a new project:
+2. Then kick off a new project & start local server:
 
   ```bash
   venice new your-project-name
-  ```
-
-
-## Shortcuts
-
-We’ve also included some handy shortcuts with Venice:
-
-- Install dependencies and clear the Git remote:
-
-  ```bash
+  cd your-project-name
   venice setup
-  ```
-
-Default admin account is `user@example.com`:`password`.
-
-- Run the deploy (supported platforms: Heroku):
-
-  ```bash
-  venice deploy
-  ```
-
-Default admin account: is `user@example.com`:`password`. After deploy is
-finished, please login and create a new account, then remove default one.
-
-- Start Venice server:
-
-  ```bash
   rails s
   ```
+
+*Default admin account is `user@example.com`:`password`.*
+
+
+## Deploy to Heroku
+
+1. Create Heroku account
+  - [Heroku | Sign up](https://signup.heroku.com/)
+
+2. Login to Heroku
+
+  ```bash
+  heroku login
+  ```
+
+3. Generate local ssh keys (if you don't have ones)
+  - [Generating SSH keys](https://help.github.com/articles/generating-ssh-keys)
+
+  ```bash
+  ssh-keygen -t rsa
+  ```
+
+4. Add local ssh keys to Heroku
+  - [Heroku | Managing Your SSH Keys](https://devcenter.heroku.com/articles/keys)
+
+  ```bash
+  heroku keys:add
+  ```
+
+5. Choose available `APPLICATION_NAME` on heroku, check using url
+`APPLICATION_NAME`.herokuapp.com
+
+6. Create AWS account
+  - [AWS | Sign up](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html)
+
+7. Create access `KEY` and `SECRET` for AWS account
+  - [AWS | Getting Your Access Key ID and Secret Access Key](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html)
+
+8. Add AWS S3 service to your AWS account
+  - [AWS | Console](http://console.aws.amazon.com/console/home)
+
+9. Pick `REGION` for Heroku application and S3 bucket:
+`us-east-1` (default) or `eu-west-1`
+  - [Heroku | Regions](https://devcenter.heroku.com/articles/regions#data-center-locations)
+  - [AWS | S3 Regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
+
+10. Deploy application to Heroku
+
+  ```bash
+  venice deploy heroku APPLICATION_NAME [REGION]
+  bin/heroku/add-s3 KEY SECRET BUCKET [REGION]
+  ```
+
+**IMPORTANT:** *Default admin account: is `user@example.com`:`password`. After
+deploy is finished, please login and create a new account, then remove default
+one.*
+
+
+## Deploy to Digital Ocean
+
+1. Create Digital Ocean account
+  - [Digital Ocean | Sign up](https://cloud.digitalocean.com/registrations/new)
+
+2. Generate local ssh keys (if you don't have ones)
+  - [Generating SSH keys](https://help.github.com/articles/generating-ssh-keys)
+
+  ```bash
+  ssh-keygen -t rsa
+  ```
+
+3. Add local ssh keys to Digital Ocean
+  - Copy ssh key from `cat ~/.ssh/id_rsa.pub`
+  - Paste in: [Digital Ocean | Security](https://cloud.digitalocean.com/settings/security)
+
+4. Create a droplet
+  - [Digital Ocean | Create Droplet](https://cloud.digitalocean.com/droplets/new)
+    - In `Choose an image` choose ubuntu.
+    - Choose your ssh key in `Add your SSH keys`
+
+5. Get Droplet IP Address
+  - [Digital Ocean | Droplets](https://cloud.digitalocean.com/droplets)
+
+6. Deploy application to Digital Ocean (You can use IP instead of HOST if Domain not configured)
+
+```bash
+venice deploy digital-ocean HOST
+```
+
+**IMPORTANT:** *Default admin account: is `user@example.com`:`password`. After
+deploy is finished, please login and create a new account, then remove default
+one.*
 
 
 ## Under the Hood
@@ -76,7 +142,8 @@ concerns that are used on the backend and CMS
 Character CMS
 - [Mongosteen](https://github.com/slate-studio/mongosteen): An easy way to add
 CRUD actions for Mongoid models
-- [Devise](https://github.com/plataformatec/devise): Flexible authentication solution for Rails with Warden
+- [Devise](https://github.com/plataformatec/devise): Flexible authentication
+solution for Rails with Warden
 
 
 ## Contributing
@@ -91,4 +158,4 @@ guidelines:
 4. Post a [pull request](https://github.com/alexkravets/venice/compare).
 
 Thank you to all
-[the contributors](https://github.com/alexkraves/venice/contributors)!
+[the contributors](https://github.com/alexkravets/venice/contributors)!

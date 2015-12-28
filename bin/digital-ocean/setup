@@ -1,0 +1,287 @@
+#!/bin/sh
+
+# -----------------------------------------------------------------------------
+# Parameters
+# -----------------------------------------------------------------------------
+GIT_URL="$1"
+HOST="$2"
+MONGO_PASS=$(date +%s | sha256sum | base64 | head -c 32 ; echo)
+
+# -----------------------------------------------------------------------------
+# Swap
+# -----------------------------------------------------------------------------
+echo "Adding swap"
+fallocate -l 1G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile   none    swap    sw    0   0" >> /etc/fstab
+
+apt-get update
+apt-get -y install language-pack-UTF-8
+apt-get -y install libgmp3-dev
+apt-get -y install imagemagick
+apt-get -y install git-core
+apt-get -y install nodejs
+
+# -----------------------------------------------------------------------------
+# MongoDB 3
+# -----------------------------------------------------------------------------
+# Add public key:
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+# Create a list file for MongoDB:
+echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+# ​Reload local package database:
+apt-get update
+echo "Installing Mongo DB"
+apt-get install -y mongodb-org
+export LC_ALL=C
+# Create `rails` mongodb user in venice db:
+mongo --eval "conn = new Mongo(); db = conn.getDB('venice'); db.createUser({user:'rails', pwd:'$MONGO_PASS', roles:['readWrite']})"
+
+adduser rails --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-login
+
+# -----------------------------------------------------------------------------
+# Repository
+# -----------------------------------------------------------------------------
+# Clone git
+cd ~rails
+git clone $GIT_URL rails_project
+cd ~rails/rails_project
+# Fetch ruby version
+RUBY_VERSION=$(grep 'ruby ' Gemfile | cut -d '"' -f 2)
+
+# -----------------------------------------------------------------------------
+# RVM
+# -----------------------------------------------------------------------------
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+curl -L get.rvm.io | bash -s stable
+source /usr/local/rvm/scripts/rvm
+rvm requirements
+rvm install $RUBY_VERSION
+rvm use $RUBY_VERSION --default
+rvm rubygems current
+
+
+gem install bundler
+bundle install
+## Compile assets:
+bundle exec rake assets:precompile
+
+chown -R rails: /home/rails/rails_project
+
+# -----------------------------------------------------------------------------
+# Nginx
+# -----------------------------------------------------------------------------
+apt-get -y install nginx
+cat <<EOT >> /etc/nginx/sites-available/rails
+upstream app_server {
+    server unix:/var/run/unicorn.sock fail_timeout=0;
+}
+
+server {
+    listen   80;
+    root /home/rails/rails_project/public;
+    server_name _;
+    index index.htm index.html;
+
+    location / {
+            try_files \$uri/index.html \$uri.html \$uri @app;
+    }
+
+    location ~* ^.+\.(jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|pdf|ppt|txt|tar|mid|midi|wav|bmp|rtf|mp3|flv|mpeg|avi)\$ {
+                    try_files \$uri @app;
+            }
+
+    location @app {
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header Host \$http_host;
+            proxy_redirect off;
+            proxy_pass http://app_server;
+    }
+}
+EOT
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/rails /etc/nginx/sites-enabled/rails
+
+# -----------------------------------------------------------------------------
+# Unicorn
+# -----------------------------------------------------------------------------
+mkdir /var/log/unicorn/
+cat <<EOT >> /etc/unicorn.conf
+listen "unix:/var/run/unicorn.sock"
+worker_processes 4
+user "rails"
+working_directory "/home/rails/rails_project"
+pid "/var/run/unicorn.pid"
+stderr_path "/var/log/unicorn/unicorn.log"
+stdout_path "/var/log/unicorn/unicorn.log"
+EOT
+
+SECRET_KEY_BASE=$(rake -f /home/rails/rails_project/Rakefile secret)
+cat <<EOT >> /etc/default/rails_project
+# Generate by running \`rake -f /home/rails/rails_project/Rakefile secret\`
+export SECRET_KEY_BASE=$SECRET_KEY_BASE
+export MONGODB_URI=mongodb://rails:$MONGO_PASS@127.0.0.1:27017/venice
+export HOST=$HOST
+export SMTP_ADDRESS=placeholder
+export SMTP_DOMAIN=placeholder
+export SMTP_PASSWORD=placeholder
+export SMTP_USERNAME=placeholder
+EOT
+chmod +x /etc/default/rails_project
+
+cat <<EOT >> /etc/default/unicorn
+# Change paramentres below to appropriate values and set CONFIGURED to yes.
+CONFIGURED=yes
+
+# Default timeout until child process is killed during server upgrade,
+# it has *no* relation to option "timeout" in server's config.rb.
+TIMEOUT=30
+
+# Path to your web application, sh'ld be also set in server's config.rb,
+# option "working_directory". Rack's config.ru is located here.
+APP_ROOT=/home/rails/rails_project
+
+# Server's config.rb, it's not a rack's config.ru
+CONFIG_RB=/etc/unicorn.conf
+
+# Where to store PID, sh'ld be also set in server's config.rb, option "pid".
+PID=/var/run/unicorn.pid
+RAILS_ENV="production"
+UNICORN_OPTS="-D -c \$CONFIG_RB -E \$RAILS_ENV"
+
+RUBY_VERSION=$RUBY_VERSION
+PATH=/usr/local/rvm/rubies/\$RUBY_VERSION/bin:/usr/local/sbin:/usr/bin:/bin:/sbin:/usr/local/rvm/bin:/usr/local/rvm/gems/\$RUBY_VERSION@global/bin:/usr/local/rvm/gems/\$RUBY_VERSION/bin/
+export GEM_HOME=/usr/local/rvm/gems/\$RUBY_VERSION
+export GEM_PATH=/usr/local/rvm/gems/\$RUBY_VERSION:/usr/local/rvm/gems/\$RUBY_VERSION@global
+DAEMON="\$APP_ROOT/bin/bundle exec unicorn"
+
+. /etc/default/rails_project
+EOT
+
+cat <<EOT >> /etc/init.d/unicorn
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          unicorn
+# Required-Start:    \$local_fs \$remote_fs
+# Required-Stop:     \$local_fs \$remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: unicorn initscript
+# Description:       unicorn
+### END INIT INFO
+
+set -e
+NAME=unicorn
+DESC="Unicorn web server"
+
+. /lib/lsb/init-functions
+
+if [ -f /etc/default/unicorn ]; then
+  . /etc/default/unicorn
+fi
+
+PID=\${PID-/run/unicorn.pid}
+
+run_by_init() {
+    ([ "\${previous-}" ] && [ "\${runlevel-}" ]) || [ "\${runlevel-}" = S ]
+}
+
+exit_with_message() {
+  if ! run_by_init; then
+    log_action_msg "\$1 Not starting."
+  fi
+  exit 0
+}
+
+check_config() {
+  if [ \$CONFIGURED != "yes" ]; then
+    exit_with_message "Unicorn is not configured (see /etc/default/unicorn)."
+  fi
+}
+
+check_app_root() {
+  if ! [ -d \$APP_ROOT ]; then
+    exit_with_message "Application directory \$APP_ROOT is not exist."
+  fi
+}
+
+set -u
+
+case "\$1" in
+  start)
+        check_config
+        check_app_root
+
+        log_daemon_msg "Starting \$DESC" \$NAME || true
+        if start-stop-daemon --start --quiet --oknodo --pidfile \$PID --exec \$DAEMON -- \$UNICORN_OPTS; then
+          log_end_msg 0 || true
+        else
+          log_end_msg 1 || true
+        fi
+        ;;
+  stop)
+        log_daemon_msg "Stopping \$DESC" \$NAME || true
+        if start-stop-daemon --stop --signal QUIT --quiet --oknodo --pidfile \$PID; then
+          log_end_msg 0 || true
+        else
+          log_end_msg 1 || true
+        fi
+        ;;
+  force-stop)
+        log_daemon_msg "Forcing stop of \$DESC" \$NAME || true
+        if start-stop-daemon --stop --quiet --oknodo --pidfile \$PID; then
+          log_end_msg 0 || true
+        else
+          log_end_msg 1 || true
+        fi
+        ;;
+  restart|force-reload)
+        log_daemon_msg "Restarting \$DESC" \$NAME || true
+        start-stop-daemon --stop --quiet --oknodo --pidfile \$PID
+        sleep 1
+        if start-stop-daemon --start --quiet --oknodo --pidfile \$PID --exec \$DAEMON -- \$UNICORN_OPTS; then
+          log_end_msg 0 || true
+        else
+          log_end_msg 1 || true
+        fi
+        ;;
+  reload)
+        log_daemon_msg "Reloading \$DESC" \$NAME || true
+        if start-stop-daemon --stop --signal HUP --quiet --oknodo --pidfile \$PID; then
+          log_end_msg 0 || true
+        else
+          log_end_msg 1 || true
+        fi
+        ;;
+  reopen-logs)
+        log_daemon_msg "Relopening log files of \$DESC" \$NAME || true
+        if start-stop-daemon --stop --signal USR1 --quiet --oknodo --pidfile \$PID; then
+          log_end_msg 0 || true
+        else
+          log_end_msg 1 || true
+        fi
+        ;;
+  status)
+        status_of_proc -p \$PID \$DAEMON \$NAME && exit 0 || exit \$?
+        ;;
+  *)
+        log_action_msg "Usage: \$0 <start|stop|restart|force-reload|reload|force-stop|reopen-logs|status>" || true
+        exit 1
+        ;;
+esac
+EOT
+
+chmod +x /etc/init.d/unicorn
+# adds unicorn to rc.d links
+update-rc.d unicorn defaults
+service unicorn start
+service nginx restart
+
+# -----------------------------------------------------------------------------
+# Seed
+# -----------------------------------------------------------------------------
+source /etc/default/unicorn
+RAILS_ENV=production rake db:seed

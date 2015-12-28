@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ "$*" == "" ]; then
+  echo "Please provide server host/ip, see: https://cloud.digitalocean.com/droplets"
+  exit 1
+fi
+
+HOST="$1"
+GIT_URL=$(git config --get remote.origin.url)
+
+if (ssh root@$HOST '[ -d ~rails/rails_project ]' ); then
+  ssh root@$HOST "bash -s" < ./bin/digital-ocean/update
+else
+  #ssh root@$HOST 'dd if=/dev/zero of=/swapfile bs=1024 count=512k ; mkswap /swapfile ; swapon /swapfile ; swapon -s'
+  ssh root@$HOST "bash -s" < ./bin/digital-ocean/setup "$GIT_URL" "$HOST"
+fi

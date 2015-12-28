@@ -25,10 +25,25 @@ module Venice
       system "bin/setup"
     end
 
-    desc "deploy", "Deploys the site to Heroku"
-    def deploy(platform = "heroku")
-      puts "Deploying the site to Heroku"
-      system "bin/deploy-#{platform}"
+    desc "deploy", "Deploys the project to heroku or digital-ocean"
+    def deploy(platform = "heroku", target = "")
+      puts "Deploying the project"
+      if platform == "heroku"
+        target = {
+          "" => "us",
+          "us-east-1" => "us",
+          "eu-west-1" => "eu"
+        }[target]
+
+        if t.nil?
+          puts "Please provide correct target parameter."
+          puts "Available options are:"
+          puts "  us-east-1"
+          puts "  eu-west-1"
+          exit
+        end
+      end
+      system "bin/#{platform}/deploy #{t}".strip
     end
 
     desc "version", "Show Venice version"
