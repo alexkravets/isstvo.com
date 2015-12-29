@@ -7,10 +7,10 @@ fi
 
 HOST="$1"
 GIT_URL=$(git config --get remote.origin.url)
+SAFE_GIT_URL="${GIT_URL/git\@github.com\:/https://github.com/}"
 
 if (ssh root@$HOST '[ -d ~rails/rails_project ]' ); then
   ssh root@$HOST "bash -s" < ./bin/digital-ocean/update
 else
-  #ssh root@$HOST 'dd if=/dev/zero of=/swapfile bs=1024 count=512k ; mkswap /swapfile ; swapon /swapfile ; swapon -s'
-  ssh root@$HOST "bash -s" < ./bin/digital-ocean/setup "$GIT_URL" "$HOST"
+  ssh root@$HOST "bash -s" < ./bin/digital-ocean/setup "$SAFE_GIT_URL" "$HOST"
 fi

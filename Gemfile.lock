@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    venice-chr (0.1.4)
+    venice-chr (0.1.5)
       thor
 
 GEM
@@ -485,4 +485,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

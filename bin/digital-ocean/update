@@ -1,8 +1,13 @@
 #!/bin/sh
 
+source /etc/default/unicorn
+
 cd ~rails/rails_project
 git pull
-bundle install
-bundle exec rake assets:precompile
+
+bin/bundle install
+bin/bundle exec rake assets:precompile
+
 chown -R rails ./
+
 service unicorn restart

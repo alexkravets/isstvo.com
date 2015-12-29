@@ -4,9 +4,9 @@
 
 *Where art meets technology.*
 
-`v` `e` `n` `i` `c` `e` is boilderplate website & blog implementation based on
+`v` `e` `n` `i` `c` `e` — website boilerplate and blog implementation based on
 [Character](https://github.com/slate-studio/chr) library. It's used as
-boilerplate for new Rails projects or quick prototypes.
+foundation for new Rails projects or quick prototypes.
 
 Homepage: https://github.com/alexkravets/venice
 
@@ -100,22 +100,24 @@ one.*
   ssh-keygen -t rsa
   ```
 
-3. Add local ssh keys to Digital Ocean
-  - Copy ssh key from `cat ~/.ssh/id_rsa.pub`
-  - Paste in: [Digital Ocean | Security](https://cloud.digitalocean.com/settings/security)
+3. Add local ssh keys to Digital Ocean account
+  
+  ```bash
+  pbcopy < ~/.ssh/id_rsa.pub
+  ```
+  
+  - [Digital Ocean | Security](https://cloud.digitalocean.com/settings/security)
 
-4. Create a droplet
+4. Create `Ubuntu 14.04` droplet, use `Add your SSH keys` option
   - [Digital Ocean | Create Droplet](https://cloud.digitalocean.com/droplets/new)
-    - In `Choose an image` choose ubuntu.
-    - Choose your ssh key in `Add your SSH keys`
 
-5. Get Droplet IP Address
+5. Get `DROPLET_IP`
   - [Digital Ocean | Droplets](https://cloud.digitalocean.com/droplets)
 
-6. Deploy application to Digital Ocean (You can use IP instead of HOST if Domain not configured)
+6. Deploy application to Digital Ocean
 
 ```bash
-venice deploy digital-ocean HOST
+venice deploy digital-ocean DROPLET_IP
 ```
 
 **IMPORTANT:** *Default admin account: is `user@example.com`:`password`. After

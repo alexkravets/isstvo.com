@@ -35,7 +35,7 @@ module Venice
           "eu-west-1" => "eu"
         }[target]
 
-        if t.nil?
+        if target.nil?
           puts "Please provide correct target parameter."
           puts "Available options are:"
           puts "  us-east-1"
@@ -43,7 +43,7 @@ module Venice
           exit
         end
       end
-      system "bin/#{platform}/deploy #{t}".strip
+      system "bin/#{platform}/deploy #{target}".strip
     end
 
     desc "version", "Show Venice version"

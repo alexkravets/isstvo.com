@@ -18,7 +18,7 @@ sed -i.bak "s/venice_development/${DEV_DB_NAME}/g" config/mongoid.yml
 rm config/mongoid.yml.bak
 
 # Seed data
-rake db:seed
+bundle exec rake db:seed
 
 # Remove Git remote if it's still the venice repo (after cloning)
 if [ "$(git config --get remote.origin.url)" = "git@github.com:alexkravets/venice.git" ]; then
