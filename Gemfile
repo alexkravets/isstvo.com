@@ -17,7 +17,7 @@ gem "fog"
 gem "fog-aws"
 gem "rack-host-redirect"
 gem "tape-chr"
-gem "journal-chr"
+gem "journal-chr", github: "alexkravets/journal"
 
 group :development do
   gem "spring"

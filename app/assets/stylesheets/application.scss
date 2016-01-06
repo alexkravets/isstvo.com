@@ -13,3 +13,26 @@ figure {
     margin-top: 0.25em;
   }
 }
+
+
+@media #{$mobile} {
+  .pagination,
+  .journal-post-footer {
+    margin-bottom: 3em;
+  }
+
+  .journal-post-footer {
+    padding-bottom: 1.5em;
+  }
+}
+
+@media #{$desktop} {
+  .journal_posts-show .journal-page-body {
+    padding-bottom: 2em;
+  }
+
+  .journal-post-footer {
+    max-width: 52em;
+    padding: 0 4.5em 4em;  
+  }
+}

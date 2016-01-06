@@ -12,13 +12,14 @@
   </style>
 </head>
 <body class="<%= body_class %>">
-  <%= render 'header' %>
+  <%= render "facebook_sdk" %>
+  <%= render "header" %>
 
   <div class="container">
     <%= yield %>
   </div>
 
-  <%= render 'footer' %>
-  <%= render 'javascript' %>
+  <%= render "footer" %>
+  <%= render "javascript" %>
 </body>
 </html>
