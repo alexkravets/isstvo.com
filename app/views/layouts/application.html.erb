@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-<!-- META TAGS ============================================================ -->
+<meta charset="utf-8" />
+<meta property="fb:app_id" content="957124867711304" />
 <%= include_meta_tags %>
-<!-- ====================================================================== -->
-  <meta name="viewport" content="initial-scale=1" />
-  <%= stylesheet_link_tag :application, media: "all" %>
-  <style>
-    <%= @settings[:styles]["css"].html_safe %>
-  </style>
+<meta name="viewport" content="initial-scale=1" />
+<%= stylesheet_link_tag :application, media: "all" %>
+<style>
+  <%= @settings[:styles]["css"].html_safe %>
+</style>
 </head>
 <body class="<%= body_class %>">
   <%= render "facebook_sdk" %>
